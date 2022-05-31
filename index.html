@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            HTML / CSS / JS
+        </title>
+    </head>
+    <body>
+
+    <form>
+        <input type='text' id="name">
+        <input type = "submit">
+    </form>
+    
+
+    <script>
+
+        function greet()
+        {
+        let name = document.querySelector('#name').value;
+        alert('hello '+name);
+        }
+        
+        document.querySelector('form').addEventListener('submit',greet);
+    </script>
+    
+
+    </body>
+</html>

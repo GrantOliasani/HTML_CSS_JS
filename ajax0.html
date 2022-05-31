@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            //Gets a stock quote via json
+          
+          async function fetchQuoteFaster()
+          {
+              try{
+                  let response = await fetch('https://api.aletheiaapi.com/StockData?symbol='+$('#symbol').val()+'&fields=Price',{
+                method: 'get',
+                headers: {
+                'key' : '6452EEB8D4BF4E6FA2C2F0B0C3A83910',
+                'Accept-Version': '2'
+                },
+                });
+              //  let data = await response.json();
+                return response.json();
+              }
+              catch (error)
+              {
+                return error;
+              }
+          }
+          
+          async function main(){
+              console.log('About to run the fetchQuoteFaster function');
+              let result = await fetchQuoteFaster();
+           
+              alert(result.Price);
+          }
+          
+          
+          
+          
+          
+          
+          
+            function fetchQuote()
+            {
+                fetch('https://api.aletheiaapi.com/StockData?symbol='+$('#symbol').val()+'fields=Price',
+                {
+                method: 'get',
+                headers: {
+                'key' : '6452EEB8D4BF4E6FA2C2F0B0C3A83910'
+                },
+                })
+                .then(response => response.json())
+                .then(json=>console.log(json))
+                .catch(error=> console.log(error))
+            
+            }
+            
+            
+            
+            
+            
+            
+            function quote()
+            {
+
+
+                var url = 'https://api.aletheiaapi.com/StockData?symbol=' + $('#symbol').val();
+                var key = "6452EEB8D4BF4E6FA2C2F0B0C3A83910";
+                $.getJSON(url,function(data)
+                {
+                    alert(data.price);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <form onsubmit = "main(); return false;">
+            <input autocomplete = "off" autofocus id="symbol" placeholder ="Symbol" type="text"/>
+            <input type="submit" value="Get Quote"/>
+        </form>
+    </body>
+</html>
